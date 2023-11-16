@@ -2,24 +2,30 @@ package main
 
 import "fmt"
 
-var (
-	sliceListaDeTarea = []tarea{}
-)
-
 type tarea struct {
 	nombre string
 	estado bool
 }
 
 func main() {
+	sliceListaDeTarea := []tarea{
+		{
+			nombre: "Desayunar",
+			estado: false,
+		}, {
+			nombre: "Almorzar",
+			estado: false,
+		}, {
+			nombre: "Cenar",
+			estado: false,
+		}}
 
-	seleccionDeTarea()
+	seleccionDeTarea(sliceListaDeTarea)
 	fmt.Printf("Lista de Tareas: %v", sliceListaDeTarea)
-
 }
 
 // seleccionDeTareas ésta funcion permite al usuario seleccionar la tarea que desea ejecutar.
-func seleccionDeTarea() {
+func seleccionDeTarea(perrito []tarea) {
 	var nombreTareaRealizar string
 	fmt.Println(" Ingresa la tarea que desea realizar: Agregar, Completar, Imprimir ")
 	fmt.Scanln(&nombreTareaRealizar)
@@ -29,7 +35,7 @@ func seleccionDeTarea() {
 	case "Agregar":
 
 	case "Completar":
-		completarTarea(sliceListaDeTarea)
+		completarTarea(perrito)
 	case "Imprimir":
 
 	}
@@ -38,15 +44,14 @@ func seleccionDeTarea() {
 func completarTarea(listaDeTarea []tarea) {
 
 	var tareaCompletar int
-	fmt.Println(" Ingrese el nombre de la tarea ha completar?: ")
+	fmt.Println(" Ingrese el número de la tarea ha completar?: ")
 	fmt.Scanln(&tareaCompletar)
 	fmt.Println(" Ingresaste: ", tareaCompletar)
 
-	Completada := true
-
-	for indice, _ := range sliceListaDeTarea {
+	for indice := range listaDeTarea {
 		if tareaCompletar == indice {
-			fmt.Println(" indice: ", "Completada", indice, Completada)
+			listaDeTarea[indice].estado = true
+			fmt.Println(" indice: Completada", indice, listaDeTarea[indice].estado)
 
 			return
 		}
