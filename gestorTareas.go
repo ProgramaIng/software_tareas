@@ -21,7 +21,7 @@ func main() {
 		}}
 
 	seleccionDeTarea(sliceListaDeTarea)
-	fmt.Printf("Lista de Tareas: %v", sliceListaDeTarea)
+
 }
 
 // seleccionDeTareas ésta funcion permite al usuario seleccionar la tarea que desea ejecutar.
@@ -33,10 +33,20 @@ func seleccionDeTarea(perrito []tarea) {
 
 	switch nombreTareaRealizar {
 	case "Agregar":
-
+		imprimirTarea(perrito)
 	case "Completar":
 		completarTarea(perrito)
+		imprimirTarea(perrito)
 	case "Imprimir":
+		imprimirTarea(perrito)
+	}
+}
+
+// imprimirTarea ésta función muestra en consola cada tarea, junto a su estado (completada o no completada)
+func imprimirTarea(carro []tarea) {
+
+	for _, tarea := range carro {
+		fmt.Println(fmt.Sprintf(" Tarea: %s Estado: %t", tarea.nombre, tarea.estado))
 
 	}
 }
