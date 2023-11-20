@@ -33,7 +33,8 @@ func seleccionDeTarea(perrito []tarea) {
 
 	switch nombreTareaRealizar {
 	case "Agregar":
-		imprimirTarea(perrito)
+		perrito1 := agregarTarea(perrito)
+		imprimirTarea(perrito1)
 	case "Completar":
 		completarTarea(perrito)
 		imprimirTarea(perrito)
@@ -67,4 +68,20 @@ func completarTarea(listaDeTarea []tarea) {
 		}
 	}
 
+}
+
+// agregarTarea ésta función solicita al usuario la nueva tarea a añadir a la lista de tareas y la agrega al map tareas.
+func agregarTarea(listaDeTarea []tarea) []tarea {
+
+	var nombreTareaAgregar string
+	fmt.Println(" Ingresa el nombre de la Nueva Tarea: ")
+	fmt.Scanln(&nombreTareaAgregar)
+	fmt.Println(" Ingresaste: ", nombreTareaAgregar)
+
+	var tareaNueva tarea
+	tareaNueva.nombre = nombreTareaAgregar
+
+	listaDeTarea = append(listaDeTarea, tareaNueva)
+
+	return listaDeTarea
 }
